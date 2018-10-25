@@ -1,0 +1,228 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  background: #f2f2f2;
+  font-family: "Montserrat", "sans-serif";
+  height: 100vh;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+button {
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+button:focus {
+  outline: none;
+}
+::-webkit-scrollbar-track {
+  background-color: #797979
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2d2e2e;
+}
+.delete-icon {
+  color: #e80e0e;
+}
+
+.deny-btn {
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bolder;
+  color: #2d2e2e;
+}
+.delete-btn {
+  background: #dd0a0a;
+  color: #f2f2f2;
+  border: none;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  letter-spacing: 1.5px;
+}
+.delete-btn:hover {
+  background: #eb1a1a;
+}
+
+.category-header {
+  padding: 15px 0;
+  font-size: 24px;
+  span {
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: 300;
+    color: #757575;
+  }
+}
+.navigation:first-of-type{
+  border-top: 1px solid dimgray;
+}
+.navigation {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  & > button {
+    padding: 10px 20px 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    i {
+      margin: 0 5px;
+    }
+  }
+  .add-category-btn {
+    background: rgb(68, 138, 255);
+    color: #f2f2f2;
+  }
+  .add-category-btn:hover {
+    background: rgb(56, 125, 242);
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+  padding: 20px 0;
+}
+
+
+
+.inputs-container {
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: wrap;
+  .input-container {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    label {
+      padding: 0 10px;
+      font-size: 10px;
+      font-weight: bold;
+      color: #3f51b5;
+    }
+    textarea,
+    input {
+      padding: 10px 0;
+      transition: 0.2s all ease-in-out;
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      color: #3f51b5;
+      box-sizing: border-box;
+      border-bottom: 1px solid #bccdcd;
+      margin: 0 10px;
+    }
+    textarea {
+      resize: none;
+    }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-bottom: 1px solid #3f51b5;
+    }
+    .invalid-input{
+        border-bottom: 1px solid red !important;
+        color: red !important;
+    }
+  }
+  .inputs-row-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .add-something-btn {
+    padding: 15px;
+    width: 45%;
+    border: none;
+    background: rgb(66, 165, 245);
+    margin: 0 auto;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    font-weight: bolder;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    letter-spacing: 1.25px;
+  }
+  .add-something-btn:hover {
+    background: rgb(35, 141, 229);
+  }
+  .add-something-btn:disabled {
+    background: transparent;
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: #2d2e2e;
+  }
+}
+
+
+.small-op-btn{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  position: relative;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  border: none;
+  i{
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    opacity: 0;
+    left: 5%;
+    transition: 0.5s all ease-in-out;
+  }
+  &:hover::before{
+    width: 90%;
+    opacity: 1;
+  }
+}
+.edit-btn{
+  color: #19948D;
+  &:hover::before{
+    border: 1px solid #19948D;
+  }
+}
+.del-btn{
+  color: red;
+  &:hover::before{
+    border: 1px solid red;
+  }
+}

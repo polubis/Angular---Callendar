@@ -1,0 +1,88 @@
+<div class="callendars-container">
+  <header class="category-header">
+    Lista utworzonych kalendarzy <span>stwórz i zarządzaj w określonym przedziale czasu</span>
+  </header>
+  <nav class="navigation">
+    <button (click)="togleAddCallendarModal(-1)" class="add-category-btn">
+      <i class="material-icons">add</i> Dodaj kalendarz
+    </button>
+  </nav>
+
+  <div class="content">
+    <div   
+    *ngFor="let callendar of Callendars; let i = index" class="callendar" [ngClass]="{'expanded-callendar': !collapsedCallendars[i]}">
+      <nav class="callendar-left-nav" [ngClass]="{'callendar-opened': !collapsedCallendars[i]}">
+        <div>
+            <span (click)="togleCallendar(callendar.name)">
+              <i [ngClass]="{'arrow-rotated': !collapsedCallendars[i]}" class="material-icons">keyboard_arrow_down</i>
+            </span>
+            <div class="nav-icons-container" *ngIf="!collapsedCallendars[i]">
+              <span (click)="togleAddCallendarModal(i)">
+                <b>Edycja</b>
+                <i class="material-icons">edit</i>
+              </span>
+              <span [class]="callendar.status === 'aktywny' ? 'cancel' : 'activate'" (click)="callendar.status === 'aktywny' ? changeStateOfCallendar(i, 'anulowany') : changeStateOfCallendar(i, 'aktywny')">
+                <b>Zmień status</b>
+                <i *ngIf="callendar.status === 'aktywny'" class="material-icons">cancel_presentation</i>
+                <i *ngIf="callendar.status === 'anulowany'" class="material-icons">check_circle_outline</i>
+              </span>
+              <span class="delete">
+                <b>Usuń</b>
+                <i class="material-icons">delete</i>
+              </span>
+              <span (click)="expandLeftMenuIntoRight(i)">
+                <b>Więcej</b>
+                <i class="material-icons">info</i>
+              </span>
+            </div>
+            
+        </div>
+      </nav>
+      <div *ngIf="collapsedCallendars[i]" class="callendar-small-content" [routerLink]="['/callendars', i]">
+        <div>
+          <b>{{callendar.name}}</b> <span>{{callendar.status}}</span> 
+        </div>
+        <article>
+          <span title="Czas pracy">
+            <i class="material-icons">timer</i>
+            <b>
+              {{callendar.workTime}}h
+            </b>
+          </span>
+          <span title="Liczba dni pracujących">
+            <i class="material-icons">today</i>
+            <b>
+              {{callendar.numberOfWorkDays}}
+            </b>
+          </span>
+          <span title="Liczba kategorii">
+            <i class="material-icons">category</i>
+            <b>
+                {{callendar.taskCategoryNumber}}
+            </b>
+          </span>
+          <span title="Liczba wszystkich zadań">
+            <i class="material-icons">dns</i>
+            <b>
+                {{callendar.tasksCountInCategory}}
+            </b>
+          </span>
+        </article>
+      </div>
+      <div *ngIf="!collapsedCallendars[i]" class="callendar-content" >
+        siema
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-modal *ngIf="shouldStartAddingCalendar" [width]="'700px'" [height]="'600px'" [headerBackground]="'rgb(66, 165, 245)'" 
+[headerIcon]="currentEditCallendarIndex === -1 ? 'add' : 'edit'"
+[messageKey]="currentEditCallendarIndex === -1 ? 'addCallendar' : 'editCallendar'" (modalClosed)="togleAddCallendarModal()" [headerTitle]="currentEditCallendarIndex === -1 ? 'Dodawanie nowego kalendarza' : 
+  'Edycja kalendarza ' + Callendars[currentEditCallendarIndex].name">
+  <app-add-callendar-form (onSubmitting)="updateCallendars($event)" [currentEditIndex]="currentEditCallendarIndex" 
+  [editValues]="currentEditStartValues"
+  [givenSettings]="callendarFormSettings" [keysWhichWIllCreateASubmitObject]="addCallendarKeysForForm">
+  </app-add-callendar-form>
+</app-modal>

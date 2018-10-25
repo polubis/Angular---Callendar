@@ -1,0 +1,110 @@
+.callendars-container{
+    .content{
+        .expanded-callendar{
+            height: 350px !important;
+        }
+        
+        .callendar{
+            animation: 0.5s animate-in-callendar-item ease-in-out forwards;
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            display: flex;
+            width: 100%;
+            transition: 0.5s all ease-in-out;
+            height: 54px;
+            margin: 35px;
+            .callendar-opened{
+                width: 200px !important;
+            }
+            .callendar-left-nav{
+                height: 100%;
+                width: 55px;
+                div{
+                    box-shadow: 3px 0 5px -2px rgba(0,0,0,0.30);
+                    -webkit-box-shadow: 3px 0 5px -2px rgba(0,0,0,0.30);
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    i, span{
+                        transition: 0.2s all linear;
+                    }
+                    span{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 15px;
+                        background: #2D2E2E;
+                        color: #F2F2F2;
+                        cursor: pointer;
+                        .arrow-rotated{
+                            transform: rotate(180deg);
+                        }
+                        b{
+                            font-size: 13px;
+                            margin-right: 10px;
+                        }
+                    }
+                    .cancel{
+                        color: yellow;
+                    }
+                    .activate{
+                        color: lightgreen;
+                    }
+                    .delete{
+                        color: tomato;
+                    }
+                    span:hover{
+                        background: #F2A615;
+                        color: #2D2E2E !important;
+                    }
+                }
+            }
+        
+            .callendar-small-content{
+                width: 100%;
+                cursor: pointer;
+                animation: 0.5s animate-in ease-in-out forwards;
+                padding: 0 20px; 
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                div > span:first-of-type{
+                    text-transform: lowercase;
+                    font-size: 13px;
+                }
+                div > span{
+                    margin: 0 10px;
+                }
+                article{
+                   width: 250px;
+                   display: flex;
+                   justify-content: space-between;
+                   height: 100%;
+                   span{
+                       display: flex;
+                       align-items: center;
+                       b{
+                           margin-left: 5px;
+                       }
+                   }
+                }
+            
+            }
+            .callendar-content{
+                padding: 15px;
+                animation: 0.5s animate-in ease-in-out forwards;
+                width: 100%;
+            }
+        }
+    }
+    @keyframes animate-in-callendar-item{
+        0%{
+            transform: translateY(-15px);
+            opacity: 0;
+        }
+        100%{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}

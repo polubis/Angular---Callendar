@@ -1,0 +1,6 @@
+<ul class="selector">
+  <label>Wybierz ikonę</label>
+  <li iconHoverDirective="{{color}}" *ngFor="let icon of icons; let i = index" (click)="selectIcon(icon)">
+    <i class="material-icons">{{icon}}</i>
+  </li>
+</ul>

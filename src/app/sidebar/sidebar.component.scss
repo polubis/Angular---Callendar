@@ -1,0 +1,64 @@
+.side-bar{
+    transition: 0.5s all ease-in-out;
+    background: #2D2E2E;
+    height: 100%;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    ul{
+        li{
+            a{
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                transition: 0.2s all linear;
+                color: #fff;
+                &:hover:not(.arrow-link){
+                    background: #F2A615;
+                    color: black;
+                }
+                span{
+                    font-size: 15px;
+                    margin-left: 15px;
+                }
+                i{
+                    transition: 0.2s all ease-in-out;
+                }
+                .extended{
+                    transform: rotate(180deg);
+                    margin-left: 150px;
+                }
+            }
+            .activated{
+                background: #F2A615;
+            }
+           
+        }
+    }
+    
+}
+.side-placeholder{
+    width: 64px;
+    height: 100%;
+}
+
+.backdrop{
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation: 0.5s animate-back-in ease-in-out forwards;
+    @keyframes animate-back-in {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 0.6;
+        }
+    }
+}

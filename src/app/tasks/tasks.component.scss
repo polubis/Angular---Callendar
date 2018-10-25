@@ -1,0 +1,53 @@
+.days-list-container {
+    display: flex;
+    margin-left: auto;
+    justify-content: space-between;
+    align-items: center;
+    & > span{
+        padding-right: 15px;
+        border-right: 1px solid #2d2e2e;
+    }
+  .days-list {
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+    margin-left: 10px;
+    div {
+      cursor: pointer;
+      margin: 0 15px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      span {
+        font-size: 12px;
+        font-weight: 300;
+        color: #757575;
+        margin-top: 5px;
+      }
+    }
+    div:not(.actual-date):hover {
+      transform: scale(1.2);
+      transition: 0.2s all ease-in-out;
+    }
+    .actual-date {
+      transform: scale(1.2);
+      span {
+        font-weight: normal;
+        color: #2d2e2e;
+      }
+    }
+  }
+}
+
+
+.day-options{
+    margin-left: auto;
+    width: 350px;
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    button{
+        margin: 0 5px;
+    }
+}

@@ -1,0 +1,193 @@
+.category {
+  margin: 30px 0;
+  display: flex;
+  & > .content-container{
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  width: 400px;
+  }
+  .empty-placeholder{
+    width: 100px;
+    background: red;
+    height: 100%;
+  }
+  .edit-nav {
+    z-index: 3;
+    span {
+      position: relative;
+      margin-right: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: 0.2s all ease-in-out;
+      i:last-of-type {
+        position: absolute;
+        top: -5px;
+        right: -20px;
+        font-size: 15px;
+      }
+    }
+    .currentedit::after{
+      content: "Edytowanie";
+      margin-left: 10px;
+      font-size: 12px;
+    }
+  }
+  nav {
+    display: flex;
+    color: white;
+    position: relative;
+    align-items: center;
+    padding: 15px 20px;
+    &:not(.edit-nav) > i:first-of-type {
+      margin-right: 12px;
+    }
+    & > i:last-of-type {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+    }
+  }
+  .editors-icons {
+    width: 94%;
+    display: flex;
+    margin: 0 10px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    color: black;
+    padding: 10px;
+    border-bottom: 1px solid rgba(31, 28, 28, 0.09);
+    font-size: 14px;
+    i {
+      cursor: pointer;
+    }
+    .delete-icon{
+      margin-right: 10px;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      border-bottom: 1px solid rgba(30, 28, 31, 0.09);
+      position: relative;
+      width: 93%;
+      padding: 25px 12.5px;
+      margin: 0 15px;
+      box-sizing: border-box;
+      .details{
+        padding: 10px 0;
+        animation: 0.2s animate-details-in ease-in-out forwards;
+        article{
+          font-size: 13px;
+          color: #2D2E2E;
+          span{
+            font-weight: 300;
+            margin-right: 10px;
+            font-size: 15px;
+          }
+        }
+        @keyframes animate-details-in{
+          0%{
+            margin-top: 0;
+          }
+          100%{
+            margin-top: 15px;
+          }
+        }
+
+      }
+      .content-container{
+        width: 100%;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        .operation-icons-container{
+          top: 10px;
+          display: flex;
+          width: 150px;
+          right: 5px;
+          justify-content: flex-end;
+          position: absolute;
+          i{
+            font-size: 18px;
+            margin-left: 10px;
+            font-weight: bold;
+          }
+        
+        }
+        .move_item_left, .details-icon{
+          position: absolute;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        .details-icon{
+          bottom: 5px;
+          right: 7.5px;
+          transform: rotate(0);
+          transition: 0.2s all ease-in-out;
+        }
+        .rotate-top{
+          transform: rotate(180deg);
+        }
+        .move_item_left{
+          top: 10px;
+          left: 7.5px;
+        }
+        & > span {
+          width: 11px;
+          height: 10px;
+          border-radius: 50%;
+          margin-right: 15px;
+        }
+        .grey-circle {
+          width: 30px;
+          background: grey;
+        }
+        & > div {
+          width: 100%;
+          p:first-of-type {
+            padding: 10px 0;
+            width: 80%;
+          }
+          p {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            span {
+              font-weight: 300;
+              i{
+                font-weight: 200;
+                font-style: normal;
+                color: #2D2E2E;
+              }
+            }
+            b {
+              margin-left: auto;
+            }
+            span:last-of-type {
+              font-size: 12px;
+              margin-left: 10px;
+            }
+          }
+        }
+        .estimated-time-container {
+          position: absolute;
+          width: 60px;
+          right: -95px;
+          display: flex;
+          flex-flow: column;
+          b{
+            margin: 2.5px 0;
+          }
+          b:first-of-type{
+            font-size: 14px;
+          }
+          b:last-of-type{
+            font-size: 17px;
+          }
+        }
+      }
+      
+    }
+  }
+}

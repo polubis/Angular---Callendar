@@ -1,0 +1,48 @@
+<form (ngSubmit)="onSubmitHandler()" class="inputs-container" autocomplete="off">
+  <div class="input-container {{setting.class}}" *ngFor="let setting of givenSettings; let i = index">
+    <label [for]="setting.name">{{setting.label}}</label>
+
+    <input (focus)="focusInput(i)" [ngClass]="{'invalid-input': !items[i].isInputCorrect}" (blur)="blurInput()"
+    [value]="items[i].value"
+    (input)="onChangeForm(i, $event)"
+    [id]="setting.name" [name]="setting.name"
+    [minLength]="setting.validationRules['minLength']" 
+    [maxLength]="setting.validationRules['maxLength']" 
+    *ngIf="setting.type !== 'textarea'" [type]="setting.type" 
+    [placeholder]="setting.placeholder" 
+    [required]="setting.validationRules['isRequired']">
+
+    <textarea (input)="onChangeForm(i, $event)" (focus)="focusInput(i)" (blur)="blurInput()" [value]="items[i].value"
+    [ngClass]="{'invalid-input': !items[i].isInputCorrect}"
+    [id]="setting.name" [name]="setting.name"
+    [minLength]="setting.validationRules['minLength']" [maxLength]="setting.validationRules['maxLength']" 
+    *ngIf="setting.type === 'textarea'" placeholder="{{setting.placeholder}}" [required]="setting.validationRules['isRequired']"></textarea>
+
+    <div class="validation-result" *ngIf="i === currentTouchedFormItem">
+        <div *ngFor="let error of setting.validationRulesDescription; let j = index">
+          <p *ngIf="items[i].results[j]" class="valid">
+              {{error}}
+              <i class="material-icons">done</i>
+          </p>
+          <p *ngIf="!items[i].results[j]" class="nt-valid">
+              {{error}}
+              <i class="material-icons">close</i>
+          </p>
+        </div>
+    </div>
+  </div>
+  <button *ngIf="currentEditIndex > -1" [disabled]="isFormDirty" class="add-something-btn" type="submit">
+    Edytuj
+  </button>
+  <button *ngIf="currentEditIndex === -1" [disabled]="isFormDirty" class="add-something-btn" type="submit">
+    Dodaj kalendarz
+  </button>
+</form>
+
+<div *ngIf="shouldShowDirtyForMessage" class="dirty-form-modal-message">
+  <i class="material-icons">error_outline</i>
+  <div>
+      Podczas wypełniania formularza wystąpiły błędy. Upewnij się, że wszystkie pola zostały wypełnione zgodnie z zasadami. Możesz to
+      sprawdzić klikając na poszczególne pola formularza.
+  </div>
+</div>

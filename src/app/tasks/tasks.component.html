@@ -1,0 +1,41 @@
+<div class="tasks">
+  <header class="category-header">
+    Lista zadań <span>zaplanuj swój dzień</span>
+  </header>
+  <nav class="navigation">
+    <button (click)="addType('Zaplanowane', 'access_time', 'just-planed-task')" class="add-category-btn">
+      <i class="material-icons">add</i> Dodaj katerogię 
+    </button>
+
+    <div class="days-list-container">
+      <span>Poniedziałek</span>
+      <div class="days-list">
+        <div *ngFor="let day of days; let i = index" [ngClass]="{'actual-date': i === 0}">
+          <i class="material-icons">calendar_today</i>
+          <span>{{day.date}}</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navigation">
+    <div class="day-options">
+      <button class="small-op-btn edit-btn">
+          Edytuj 
+         <i class="material-icons">edit</i> 
+      </button>
+      <button class="small-op-btn del-btn">
+        Usuń 
+        <i class="material-icons">delete</i> 
+      </button>
+
+    </div>
+  </nav>
+  <div class="content">
+    <app-task *ngFor="let taskType of tasksTypes; let i = index" [taskTypesLength]="tasksTypes.length" [taskCategoryIndex]="i"
+      (onMovingItemIntoRight)="moveItemInRight(i, $event)" (onAddingNewTask)="addNewTask(i, $event)" (onMovingItemIntoLeft)="moveItemInLeft(i, $event)"
+      (onRemoveTask)="removeTask(i, $event)" (onIconAdded)="changeIcon(i, $event)" (onDeleteCaterogy)="deleteCategory(i)" (onColorChanged)="changeColor(i, $event)"
+      (onEditTask)="editTask($event, i)" [taskType]="taskType">
+    </app-task>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+
+<div id="container">
+  <app-sidebar></app-sidebar>
+  <div id="content">
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
+<div id="comunicate-container" *ngIf="comunicate.showComunicate"
+[ngClass]="{'comunicate-succ': comunicate.comunicateStatus === true,
+'comunicate-error': comunicate.comunicateStatus === false}">
+   {{comunicate.message}}
+   <i (click)="hideComunicate()" class="material-icons close-comunicates-icon">close</i>
+</div>

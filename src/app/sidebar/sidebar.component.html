@@ -1,0 +1,24 @@
+<nav class="side-bar">
+  <ul>
+    <li>
+      <a role="button" class="arrow-link" (click)="togleSideBar()">
+        <i [ngClass]="{extended: showDetails}" class="material-icons">
+            chevron_right
+        </i>
+      </a>
+    </li>
+
+    <li *ngFor="let item of sideBarItems">
+      <a (click)="togleSideBarFromIcon()" routerLink="{{item.link}}" role="button" 
+      routerLinkActive="activated" [routerLinkActiveOptions]="{exact: true}">
+          <i class="material-icons">{{item.icon}}</i> 
+          <span *ngIf="showDetails">{{item.name}}</span>
+        </a>
+  </ul>
+</nav>
+
+<nav class="side-placeholder"></nav>
+
+<div (click)="togleSideBar()" *ngIf="showDetails" class="backdrop">
+
+</div>

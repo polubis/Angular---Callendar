@@ -1,0 +1,39 @@
+.home{
+    height: 100%;
+    .logo-container{
+        position: relative;
+    z-index: 0;
+        .circle{
+            font-family: 'Lobster', cursive;
+            border-radius: 50%;
+            border: none;
+            color: #F2F2F2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            background: #0FD4FF;
+            position: absolute;
+            font-size: 30px;
+            margin: 0 auto;
+            height: 200px;
+            width: 200px;
+            letter-spacing: 2.5px;
+        }
+        .circle::before, .circle::after{
+            border: 2px solid #0FD4FF;
+            content: '';
+            width: 300px;
+            position: absolute;
+        }
+        .circle::before{
+            left: -135%;
+        }
+        .circle::after{
+            right: -135%;
+        }
+    }
+}

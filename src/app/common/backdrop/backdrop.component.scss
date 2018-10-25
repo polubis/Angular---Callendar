@@ -1,0 +1,18 @@
+.backdrop{
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation: 0.5s animate-back-in ease-in-out forwards;
+    @keyframes animate-back-in {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 0.6;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="modal" [style.width]="width" [style.height]="height">
+  <i (click)="closeModal()" class="material-icons">close</i>
+  <header [style.background]="headerBackground">
+    <p><i class="material-icons">{{headerIcon}}</i><span>{{headerTitle}}</span></p>
+    <article>
+      {{messages[messageKey].content}}
+    </article>
+  </header>
+  <div>
+    <ng-content (modalClosed)="closeModal()" (categoryDeleted)="deleteCategory()"></ng-content>
+  </div>
+</div>
+
+<app-backdrop (modalClosed)="closeModal()">
+</app-backdrop>

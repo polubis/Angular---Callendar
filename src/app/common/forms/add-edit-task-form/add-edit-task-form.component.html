@@ -1,0 +1,31 @@
+<form [@listAdd]="state" (submit)="onSubmitHandler(name, description, startDate, estimatedEndDate, estimatedEndHour, $event)" class="inputs-container">
+  <i *ngIf="showCloseIcon" (click)="closeForm()" class="material-icons">close</i>
+  <div class="input-container input-text">
+    <label for="name">Nazwa</label>
+    <input autocomplete="off" id="name" type="text" placeholder="nazwa zadania..." #name/>
+  </div>
+  <div class="input-container input-desc">
+      <label for="desc">Opis</label>
+      <textarea id="desc" #description autocomplete="off" placeholder="opis zadania..."></textarea>
+  </div>
+  <div class="input-container input-date">
+    <label for="startDate">Data rozpoczęcia</label>
+    <input id="startDate" data-inputmask="'alias': 'date'" autocomplete="off" type="date" placeholder="(dd-mm-yyyy) : (hh-mm)..." #startDate/>
+  </div>
+  <div class="input-container input-time">
+      <label for="time">Godzina rozpoczęcia</label>
+      <input id="time" autocomplete="off" type="time" placeholder="czas w godzinach..." #time/>
+  </div>
+  <div class="input-container input-date">
+    <label for="estimatedEndDate">Data zakończenia</label>
+    <input id="estimatedEndDate" data-inputmask="'alias': 'date'" autocomplete="off" type="date" placeholder="(dd-mm-yyyy) : (hh-mm)..." #estimatedEndDate/>
+  </div>
+  <div class="input-container input-time">
+      <label for="estimatedEndHour">Godzina zakończenia</label>
+      <input id="estimatedEndHour" autocomplete="off" type="time" placeholder="czas w godzinach..." #estimatedEndHour/>
+  </div>
+  
+  <button type="submit" class="submit-btn" [style.color]="color">
+      <i class="material-icons">add_circle</i>
+  </button>
+</form> 

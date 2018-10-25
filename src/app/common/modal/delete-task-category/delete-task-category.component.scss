@@ -1,0 +1,17 @@
+.delete-task-content{
+    padding: 20px;
+    height: 250px;
+    display: flex;
+    margin-top: 25px;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    h3{
+        color: #2D2E2E;
+    }
+    div{
+        button{
+            margin: 0 30px;
+        }
+    }
+}

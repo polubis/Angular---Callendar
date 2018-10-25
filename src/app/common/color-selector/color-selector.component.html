@@ -1,0 +1,6 @@
+<ul class="selector">
+  <label>Wybierz kolor</label>
+  <li class="{{className}} marginated-li" (click)="changeColor(color)"
+  [style.background]="color" *ngFor="let color of colorsArray; let i = index">
+  </li>
+</ul>

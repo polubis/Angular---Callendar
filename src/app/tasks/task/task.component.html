@@ -1,0 +1,81 @@
+<div class="category" [@listAdd]="state" dropDirective (dropEvent)="dropTask($event)">
+  <div class="content-container">
+    <nav *ngIf="isEditing" class="edit-nav {{type.className}}" [style.background]="type.color">
+      <span [ngClass]="{currentedit: currentOperation === 'changeIcon'}" (click)="changeCurrentOperation('changeIcon')">
+            <i class="material-icons">{{type.icon}}</i>
+            <i class="material-icons">edit</i>
+          </span>
+      <span [ngClass]="{currentedit: currentOperation === 'changeColor'}" (click)="changeCurrentOperation('changeColor')">
+            <i class="material-icons">color_lens</i>
+            <i class="material-icons">edit</i>
+          </span>
+      <i (click)="togleEditing()" class="material-icons">close</i>
+    </nav>
+
+    <nav *ngIf="!isEditing" [style.background]="type.color">
+      <i class="material-icons">{{type.icon}}</i>
+      <span>{{type.name}}</span>
+      <i *ngIf="!isAddingTask; else closeEditIcon" (click)="togleAddingTask()" class="material-icons">add_circle</i>
+      <ng-template #closeEditIcon><i (click)="togleAddingTask()" class="material-icons">close</i></ng-template>
+    </nav>
+    <div *ngIf="!isAddingTask && !isEditing" class="editors-icons">
+      <i (click)="togleDeleteCategoryModal()" class="material-icons delete-icon">delete</i>
+      <i (click)="togleEditing()" class="material-icons">edit</i>
+    </div>
+    <ul>
+      <app-icon-selector (iconAdded)="onAddIcon($event)" [currentIcon]="type.icon" [color]="type.color" *ngIf="currentOperation === 'changeIcon'">
+      </app-icon-selector>
+
+      <app-color-selector (colorChanged)="onChangeColor($event)" *ngIf="currentOperation === 'changeColor'">
+      </app-color-selector>
+
+      <app-modal [headerTitle]="'Usuwanie katerogii'"
+      *ngIf="wantDeleteCategory" [width]="'750px'" [height]="'500px'" [headerBackground]="type.color" [headerIcon]="'delete'"
+        [messageKey]="'deleteCategory'" (modalClosed)="togleDeleteCategoryModal()">
+        <app-delete-task-category (modalClosed)="togleDeleteCategoryModal()" (categoryDeleted)="deleteCategory()">
+        </app-delete-task-category>
+      </app-modal>
+
+      <li [@listAdd]="state" *ngIf="isAddingTask">
+        <div class="content-container">
+          <span class="grey-circle"></span>
+          <app-add-edit-task-form (onSubmitDone)="addNewTask($event)" [color]="type.color" [showCloseIcon]="false">
+          </app-add-edit-task-form>
+        </div>
+      </li>
+
+      <li (startDrag)="startDrag(task, i)"
+      *ngFor="let task of type.tasks; let i = index" [dragDirective]='item'>
+        <div *ngIf="currentEditTaskId !== i" class="content-container">
+          <span [style.background]="type.color"></span>
+          <div>
+            <p>{{task.name}}</p>
+            <p><span><i>dziś</i> {{task.startHour}}</span><span>pozostało: <b>13h i 14 min</b></span></p>
+          </div>
+          <div class="estimated-time-container">
+            <b>{{task.estimatedHour}}</b>
+            <b>jutro</b>
+          </div>
+          <div class="operation-icons-container">
+            <i (click)="removeTask(i)" class="material-icons delete-icon">delete</i>
+            <i (click)="setCurrentEditTaskIt(i)" class="material-icons edit-icon">edit</i>
+            <i *ngIf="taskCategoryIndex !== taskTypesLength-1" (click)="moveItemIntoRight(i)" class="material-icons move_item_right">subdirectory_arrow_right</i>
+          </div>
+          <i (click)="expandTaskDetails(i)" [ngClass]="{'rotate-top': expandedDetailsId === i}" class="material-icons details-icon">expand_more</i>
+          <i *ngIf="taskCategoryIndex !== 0" (click)="moveItemIntoLeft(i)" class="material-icons move_item_left">subdirectory_arrow_left</i>
+        </div>
+        <app-add-edit-task-form [showCloseIcon]="true" *ngIf="currentEditTaskId === i" (onSubmitDone)="editTask($event)" [color]="type.color"
+          (onFormClosing)="setCurrentEditTaskIt(-1)">
+        </app-add-edit-task-form>
+        <div *ngIf="expandedDetailsId === i" class="details">
+          <article>
+            <span>Opis: </span> <b [style.color]="type.color">[ </b>{{task.description}}<b [style.color]="type.color"> ]</b>
+          </article>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="empty-placeholder"></div>
+
+</div>

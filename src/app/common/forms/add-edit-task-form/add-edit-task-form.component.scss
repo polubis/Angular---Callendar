@@ -1,0 +1,26 @@
+.inputs-container {
+    & > i{
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .input-text {
+      width: 100%;
+    }
+    .input-date{
+      width: 200px;
+    }
+    .input-time{
+      width: 100px;
+    }
+    .submit-btn {
+      position: absolute;
+      background: none;
+      border: none;
+      height: 50px;
+      right: -75px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }

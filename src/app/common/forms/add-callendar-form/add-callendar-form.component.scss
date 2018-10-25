@@ -1,0 +1,60 @@
+.inputs-container {
+  padding: 30px;
+  flex-flow: wrap !important;
+  display: flex;
+  .half-width {
+    width: 44%;
+  }
+  button {
+    margin-top: 25px;
+  }
+  .date {
+    width: 45%;
+  }
+  .time {
+    width: 60%;
+  }
+  .validation-result {
+    position: absolute;
+    bottom: -95px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    height: 75px;
+    padding: 0 10px;
+    font-size: 12px;
+    left: 0;
+    margin: 5px 0;
+    div{
+        .valid{
+            color: lightgreen;
+        }
+        .nt-valid{
+            color: #FE9C49;
+        }
+        p{
+            display: flex;
+            align-items: center;
+            i{
+                margin-left: 5px;
+                font-size: 15px;
+            }
+        }
+    }
+  }
+}
+
+.dirty-form-modal-message{
+  position: fixed;
+  padding: 25px 15px;
+  color: #FE9C49;
+  display: flex;
+  align-items: center;
+  div{
+    margin-left: 15px;
+  }
+  i{
+    font-size: 46px;
+  }
+}

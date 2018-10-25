@@ -1,0 +1,43 @@
+#container{
+    height: 100%;
+    display: flex;
+    
+    #content{
+        width: 100%;
+        padding: 30px 50px;
+        box-sizing: border-box;
+         
+    }
+}
+#comunicate-container{
+    position: fixed;
+    z-index: 10;
+    padding: 15px;
+    width: 100%;
+    bottom: 0;
+    animation: 0.5s animate-comunicates-in ease-in-out forwards;
+    @keyframes animate-comunicates-in {
+        0%{
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .close-comunicates-icon{
+        position: absolute;
+        right: 40px;
+        top: 5px;
+        cursor: pointer;
+    }
+} 
+.comunicate-succ{
+    background: lightgreen;
+    color: black;
+}
+.comunicate-error{
+    background: red;
+    color: white;
+}
